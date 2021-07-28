@@ -37,7 +37,7 @@ public class Fragment2 extends Fragment {
                 String title = etTitle.getText().toString();
                 String description = etDescription.getText().toString();
 
-                Fragment fragment = new Fragment();
+                Fragment1 fragment = new Fragment1();
                 Bundle bundle = new Bundle();
                 bundle.putString("title", title);
                 bundle.putString("description", description);

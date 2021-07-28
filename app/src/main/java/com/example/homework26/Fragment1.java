@@ -4,9 +4,11 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentResultOwner;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,6 +19,12 @@ import java.security.Key;
 
 
 public class Fragment1 extends Fragment {
+
+
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        adapter = new RecyclerAdapter(getContext());
+    }
 
 
     Button btnAdd;
@@ -31,6 +39,7 @@ public class Fragment1 extends Fragment {
 
         btnAdd =view.findViewById(R.id.btn_add);
         rvTask = view.findViewById(R.id.rv_recycle);
+
         rvTask.setAdapter(adapter);
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,14 +48,13 @@ public class Fragment1 extends Fragment {
             }
         });
         Bundle arguments = getArguments();
-        String title = arguments.getString("title");
-        String description = arguments.getString("description");
-        TaskModel model = new TaskModel(title,description);
-        adapter.addTask(model);
-
-
-
-
+        if(arguments != null) {
+            String title = arguments.getString("title");
+            String description = arguments.getString("description");
+            TaskModel model = new TaskModel(title, description);
+            adapter.addTask(model);
+        }
         return view;
+
     }
 }

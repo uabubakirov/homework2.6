@@ -9,10 +9,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.RecyclerViewHolder> {
-    List<TaskModel> list;
+    List<TaskModel> list = new ArrayList<>();
     Context context;
 
     public RecyclerAdapter(Context context) {
@@ -48,8 +49,8 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.Recycl
         TextView txtTitle,txtDescription;
         public RecyclerViewHolder(View itemView) {
             super(itemView);
-            itemView = txtTitle.findViewById(R.id.txt_title);
-            itemView = txtDescription.findViewById(R.id.txt_description);
+        txtTitle = itemView.findViewById(R.id.txt_title);
+        txtDescription = itemView.findViewById(R.id.txt_description);
         }
     }
 }
